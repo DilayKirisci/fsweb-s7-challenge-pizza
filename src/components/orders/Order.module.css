@@ -1,0 +1,151 @@
+.orderHeader h1 {
+	text-align: center;
+	font-family: "Barlow", sans-serif;
+	font-weight: bolder;
+	background-color: #ce2829;
+	margin: 0;
+	padding: 30px;
+	color: white;
+}
+
+.orderContainer {
+	max-width: 1920px;
+	width: 100%;
+	padding: 0px 300px;
+	margin: 50px auto;
+}
+
+/* -----ITEM ---- */
+.item {
+	margin: 30px auto;
+	line-height: 2.3;
+}
+
+.itemTitle {
+	font-weight: 600;
+}
+
+.itemDetails {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.itemPrice {
+	font-size: 24px;
+	font-weight: bold;
+}
+.itemRating {
+	margin-right: -200px;
+	font-weight: lighter;
+}
+.itemComment {
+	font-weight: lighter;
+}
+
+.itemContent p {
+	font-weight: lighter;
+}
+
+/* -----SIZE----- */
+
+.itemStuff {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.itemStuff p {
+	font-weight: bolder;
+}
+.itemSize {
+	margin-right: 400px;
+}
+
+.itemSize input {
+	margin-top: 20px;
+}
+
+.itemDough label {
+	padding: 10px;
+}
+
+/* ----MATERIAL	---- */
+
+.material {
+	margin: 150px auto;
+}
+
+.material p {
+	font-weight: lighter;
+	margin-top: 20px;
+	font-size: 14px;
+}
+.material form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.material label {
+	flex: 1 0 calc(33.33% - 75px);
+	margin: 20px 15px;
+	font-weight: bolder;
+	font-size: 14px;
+}
+
+/* ----NOTE ---- */
+
+.noteContainer {
+	margin-top: 80px;
+}
+
+.noteContainer input {
+	width: 100%;
+	padding: 15px 15px;
+	border-radius: 10px;
+	border: 1px solid rgba(117, 114, 114, 0.434);
+	font-weight: ligher;
+	margin-bottom: 30px;
+	font-size: 12px;
+}
+.noteContainer hr {
+	font-weight: bolder;
+	color: black;
+	font-size: 3px;
+}
+
+/* -----Delivery ---- */
+
+.deliverContainer {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-direction: row;
+}
+
+.deliverButton {
+	border: 1px solid gray;
+	text-align: center;
+}
+.itemCount {
+	width: 30px;
+	padding: 15px;
+}
+.buttonDesrease {
+	background-color: #fdc913;
+	padding: 15px;
+	width: 30px;
+}
+
+.buttonIncrease {
+	background-color: #fdc913;
+	padding: 15px;
+	width: 30px;
+}
+
+.deliverSum {
+	background-color: #fdc913;
+	width: 70%;
+	text-align: center;
+	padding: 30px;
+}
