@@ -1,11 +1,24 @@
-.orderHeader h1 {
+link {
+	background-color: #fdc913;
+	color: white;
+}
+
+.orderHeader {
 	text-align: center;
 	font-family: "Barlow", sans-serif;
 	font-weight: bolder;
 	background-color: #ce2829;
 	margin: 0;
-	padding: 30px;
+	padding: 50px;
 	color: white;
+}
+
+.breadcrumbs {
+	text-align: left;
+}
+.breadcrumbs a {
+	color: white;
+	margin-right: 10px;
 }
 
 .orderContainer {
@@ -49,7 +62,7 @@
 
 /* -----SIZE----- */
 
-.itemStuff {
+.itemStuff form {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -59,6 +72,8 @@
 }
 .itemSize {
 	margin-right: 400px;
+	display: flex;
+	flex-direction: column;
 }
 
 .itemSize input {

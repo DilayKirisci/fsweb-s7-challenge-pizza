@@ -1,52 +1,61 @@
 import React from "react";
 import s from "./Home.module.css";
 import { Link } from "react-router-dom";
+import ramen from "../../Assets/esnek/mini-buttons/1.png.svg";
+import pizza from "../../Assets/esnek/mini-buttons/2.png.svg";
+import burger from "../../Assets/esnek/mini-buttons/3.png.svg";
+import kizartmalar from "../../Assets/esnek/mini-buttons/4.png.svg";
+import fastFood from "../../Assets/esnek/mini-buttons/5.png.svg";
+import gazliIcecekler from "../../Assets/esnek/mini-buttons/6.png.svg";
+import food1 from "../../Assets/esnek/food-1.png";
+import food2 from "../../Assets/esnek/food-2.png";
+import food3 from "../../Assets/esnek/food-3.png";
 
 export default function Menu() {
 	const navItems = [
 		{
-			src: "../../src/Assets/esnek/mini-buttons/1.png.svg",
+			url: ramen,
 			title: "Ramen",
 		},
 		{
-			src: "../../src/Assets/esnek/mini-buttons/2.png.svg",
+			url: pizza,
 			title: "Pizza",
 		},
 		{
-			src: "../../src/Assets/esnek/mini-buttons/3.png.svg",
+			url: burger,
 			title: "Burger",
 		},
 		{
-			src: "../../src/Assets/esnek/mini-buttons/4.png.svg",
+			url: kizartmalar,
 			title: "Kizartmalar",
 		},
 		{
-			src: "../../src/Assets/esnek/mini-buttons/5.png.svg",
+			url: fastFood,
 			title: "Fast Food",
 		},
 		{
-			src: "../../src/Assets/esnek/mini-buttons/6.png.svg",
+			url: gazliIcecekler,
 			title: "Gazli Icecekler",
 		},
 	];
 	const foodItems = [
 		{
-			url: "../../src/Assets/esnek/mini-buttons/1.png.svg",
+			url: food1,
 			title: "Terminal Pizza",
 			rate: 4.9,
 			comment: 200,
 			price: 60,
 		},
 		{
-			url: "../../src/Assets/esnek/mini-buttons/2.png.svg",
+			url: food2,
 			title: "Position Absolute Pizza",
 			rate: 4.9,
 			comment: 928,
 			price: 85,
 		},
 		{
-			url: "../../Assets/esnek/mini-buttons/3.png.svg",
-			title: "useEffect Tavuklu Burger",
+			url: food3,
+			title: "UseEffect Tavuklu Burger",
 			rate: 4.9,
 			comment: 462,
 			price: 75,
@@ -54,7 +63,7 @@ export default function Menu() {
 	];
 	return (
 		<>
-			<div className={s.cardContainer}>
+			<div className={s.cardContainer} id="menu">
 				<div className={s.card1}>
 					<h2 className={s.cardTitle}>
 						Ozel <br /> Lezzetus
@@ -94,8 +103,8 @@ export default function Menu() {
 				<h2>Aciktiran Kodlara Doyuran Lezzetler</h2>
 				<div className={s.foodButton}>
 					{navItems.map((item, index) => (
-						<button className={s.navButton}>
-							<img src={item.src} alt={index} />
+						<button className={s.navButton} id={"menuNav" + index}>
+							<img src={item.url} alt={item.title} />
 							<span className={s.itemTitle}>{item.title}</span>
 						</button>
 					))}
@@ -105,20 +114,20 @@ export default function Menu() {
 			<div className={s.foodCardContainer}>
 				<div className={s.foodCard}>
 					{foodItems.map((food, index) => (
-						<button className={s.foodCardButton}>
-							<img src={food.src} alt={index} />
+						<Link to="/order" className={s.foodCardButton} id={"menu" + index}>
+							<img src={food.url} alt={food.title} className={s.foodCardImg} />
 							<div className={s.foodCardText}>
 								<div className={s.foodCardTitle}>{food.title}</div>
 								<div className={s.foodCardInfo}>
 									<span>{food.rate}</span>
-									<span>{food.comment}</span>
+									<span>({food.comment})</span>
 									<span>
 										{food.price} {"\u20BA"}{" "}
 									</span>
 									<span></span>
 								</div>
 							</div>
-						</button>
+						</Link>
 					))}
 				</div>
 			</div>

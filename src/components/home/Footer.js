@@ -29,7 +29,37 @@ export default function Footer() {
 				<p className={s.footerMenuItem}> Testler Gecti Mutlu Burger </p>
 				<p className={s.footerMenuItem}> Posion Absolute Aci Burger </p>
 			</div>
-			<div className={s.footerInsta}></div>
+			<div className={s.footerInsta}>
+				<p className={s.footerInstaTitle}> Instragram</p>
+				<div className={s.footerInstaImg1}>
+					<img
+						src={require("../../Assets/esnek/insta/li-0.png")}
+						alt="locaton"
+					/>
+					<img
+						src={require("../../Assets/esnek/insta/li-1.png")}
+						alt="locaton"
+					/>
+					<img
+						src={require("../../Assets/esnek/insta/li-2.png")}
+						alt="locaton"
+					/>
+					<div className={s.footerInstaImg2}>
+						<img
+							src={require("../../Assets/esnek/insta/li-3.png")}
+							alt="locaton"
+						/>
+						<img
+							src={require("../../Assets/esnek/insta/li-4.png")}
+							alt="locaton"
+						/>
+						<img
+							src={require("../../Assets/esnek/insta/li-5.png")}
+							alt="locaton"
+						/>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

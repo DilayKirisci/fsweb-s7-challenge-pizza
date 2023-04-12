@@ -1,34 +1,41 @@
 import s from "./Home.module.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import ramen from "../../Assets/esnek/mini-buttons/1.png.svg";
+import pizza from "../../Assets/esnek/mini-buttons/2.png.svg";
+import burger from "../../Assets/esnek/mini-buttons/3.png.svg";
+import kizartmalar from "../../Assets/esnek/mini-buttons/4.png.svg";
+import fastFood from "../../Assets/esnek/mini-buttons/5.png.svg";
+import gazliIcecekler from "../../Assets/esnek/mini-buttons/6.png.svg";
+
 const navItems = [
 	{
-		url: "../../src/Assets/esnek/mini-buttons/1.png.svg",
+		url: ramen,
 		title: "Ramen",
 	},
 	{
-		url: "../../src/Assets/esnek/mini-buttons/2.png.svg",
+		url: pizza,
 		title: "Pizza",
 	},
 	{
-		url: "../../src/Assets/esnek/mini-buttons/3.png.svg",
+		url: burger,
 		title: "Burger",
 	},
 	{
-		url: "../../src/Assets/esnek/mini-buttons/4.png.svg",
+		url: kizartmalar,
 		title: "Kizartmalar",
 	},
 	{
-		url: "../../src/Assets/esnek/mini-buttons/5.png.svg",
+		url: fastFood,
 		title: "Fast Food",
 	},
 	{
-		url: ".../../src/Assets/esnek/mini-buttons/6.png.svg",
+		url: gazliIcecekler,
 		title: "Gazli Icecekler",
 	},
 ];
 
-export default function Banner(props) {
+export default function Banner() {
 	return (
 		<>
 			<div className={s.bannerContainer}>
@@ -45,7 +52,7 @@ export default function Banner(props) {
 			</div>
 			<div className={s.navbarContainer}>
 				{navItems.map((item, index) => (
-					<div className={s.navDiv} key={index}>
+					<div className={s.navDiv} key={"nav" + index}>
 						<img src={item.url} alt={index} />
 						<span>{item.title}</span>
 					</div>

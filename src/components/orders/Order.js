@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import Material from "./Material";
 import Deliver from "./Deliver";
+
 import { Link } from "react-router-dom";
+import axios from "axios";
 import * as yup from "yup";
 
 const pizzas = [
@@ -46,37 +48,49 @@ const initialState = {
 };
 
 const schema = yup.object().shape({
-	size: yup.string().required(),
-	dough: yup.string().required(),
-	materials: yup
-		.array()
-		.max(2, "En fazla 10 malzeme seçebilirsiniz.")
-		.required(),
+	size: yup.string().required("Please select a pizza size."),
+	dough: yup.string().required("Please select a pizza dough."),
+	materials: yup.array().max(10, "You can choose 10 ingredients most."),
 	note: yup.string(),
 });
 
 export default function Order() {
 	const [data, setData] = useState(initialState);
-	const [price, setPrice] = useState(0);
+	const [price, setPrice] = useState(pizzas[0].price);
 	const [extra, setExtra] = useState(0);
-	const [formErrors, setFormErrors] = useState({});
+	const [disabled, setDisabled] = useState(true);
+	const [count, setCount] = useState(1);
+	const [sum, setSum] = useState();
 
-	let sum = 0;
+	const [errors, setErrors] = useState({
+		dough: "",
+		size: "",
+		materials: "",
+	});
+
 	function updatePrice(data) {
 		const basePrice = pizzas[0].price;
 		let ext = data.materials.length * 5;
 		setExtra(ext);
-		sum = basePrice + ext;
-		setPrice(sum);
-		console.log(data.materials.length);
+		setSum(basePrice + ext);
+		setPrice(basePrice + ext);
 	}
 
-	// useEffect(() => {
-	// 	handleFormChange();
-	// }, data);
-	// useEffect(() => {
-	// 	schema.isValid(data).then((valid) => setIsSubmitted(!valid));
-	//   }, [data]);
+	function handleIncreaseAmount() {
+		setCount(count + 1);
+		setPrice(sum * (count + 1));
+	}
+
+	function handleDecreaseAmount() {
+		if (count > 0) {
+			setCount(count - 1);
+			setPrice(sum * (count - 1));
+		}
+	}
+
+	useEffect(() => {
+		schema.isValid(data).then((valid) => setDisabled(!valid));
+	}, [data]);
 
 	const handleFormChange = (event) => {
 		const { name, value, type, checked } = event.target;
@@ -89,7 +103,8 @@ export default function Order() {
 						? [...prevData.materials, value]
 						: prevData.materials.filter((m) => m !== value)
 					: value,
-			price: sum,
+			// price: handleAmountClick(sum, count),
+
 			type: pizzas[0].type,
 		}));
 		updatePrice(data);
@@ -97,43 +112,60 @@ export default function Order() {
 
 	useEffect(() => {
 		updatePrice(data);
-	}, [data]);
+	}, [data, count]);
 
-	const handleFormSubmit = async (e) => {
+	function handleFormSubmit(e) {
 		e.preventDefault();
-		try {
-			await schema.validate(data, { abortEarly: false });
-			setFormErrors({});
-			// Send form data to server
-		} catch (error) {
-			const newErrors = {};
-			error.inner.forEach((error) => {
-				newErrors[error.path] = error.message;
-			});
-			setFormErrors(newErrors);
+		if (disabled) {
+			let errorMsg = "You have to complete the form.";
+			if (errors.size) {
+				errorMsg = "Please select a pizza size.";
+			} else if (errors.dough) {
+				errorMsg = "Please select a pizza dough.";
+			} else if (errors.materials) {
+				errorMsg = "Please select at least one pizza material.";
+			}
+			alert(errorMsg);
+		} else {
+			axios
+				.post("https://reqres.in/api/users", data)
+				.then(function(response) {
+					console.log("postData", response.data);
+					setData(initialState);
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		}
-		setData(initialState);
-	};
+	}
 
 	useEffect(() => {
 		console.log(data);
 	}, [data]);
-	const [activeRoute, setActiveRoute] = useState("");
 
+	const [activeRoute, setActiveRoute] = useState("");
 	const handleClick = (route) => {
 		setActiveRoute(route);
 	};
+
 	return (
 		<>
 			<header className={s.orderHeader}>
 				<h1>Teknolojik Yemekler</h1>
-				<div className="breadcrumbs">
+				<div className={s.breadcrumbs}>
 					<Link
 						to="/"
 						className={activeRoute === "home" ? "active" : ""}
 						onClick={() => handleClick("home")}
 					>
-						Home
+						Home -
+					</Link>
+					<Link
+						to="/menu"
+						className={activeRoute === "menu" ? "active" : ""}
+						onClick={() => handleClick("menu")}
+					>
+						Menu -
 					</Link>
 					<Link
 						to="/order"
@@ -141,13 +173,6 @@ export default function Order() {
 						onClick={() => handleClick("order")}
 					>
 						Order
-					</Link>
-					<Link
-						to="/success"
-						className={activeRoute === "success" ? "active" : ""}
-						onClick={() => handleClick("success")}
-					>
-						Success
 					</Link>
 				</div>
 			</header>
@@ -159,6 +184,11 @@ export default function Order() {
 					onFormSubmit={handleFormSubmit}
 					extra={extra}
 					pizzas={pizzas}
+					disabled={disabled}
+					onIncreaseAmount={handleIncreaseAmount}
+					onDecreaseAmount={handleDecreaseAmount}
+					count={count}
+					sum={sum}
 				/>
 			</div>
 		</>
