@@ -1,6 +1,6 @@
 import s from "./Order.module.css";
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function Deliver(props) {
 	const {
 		onFormSubmit,
@@ -46,7 +46,7 @@ export default function Deliver(props) {
 							</p>
 						)}
 					</div>
-					<button onClick={onFormSubmit} disabled={disabled}>
+					<button onClick={onFormSubmit} disabled={disabled} id="submitOrder">
 						Sipars Ver!
 					</button>
 				</div>

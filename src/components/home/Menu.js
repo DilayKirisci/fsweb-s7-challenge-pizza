@@ -90,7 +90,7 @@ export default function Menu() {
 						<h2 className={s.cardTitle}>
 							<span>Coooook</span> hizli <br /> npm gibi kurye{" "}
 						</h2>
-						<button className={s.cardButton}>
+						<button className={s.cardButton} id="order-pizza">
 							<Link to="/order" className={s.orderLink}>
 								SIPARIS VER
 							</Link>
@@ -103,7 +103,7 @@ export default function Menu() {
 				<h2>Aciktiran Kodlara Doyuran Lezzetler</h2>
 				<div className={s.foodButton}>
 					{navItems.map((item, index) => (
-						<button className={s.navButton} id={"menuNav" + index}>
+						<button className={s.navButton}>
 							<img src={item.url} alt={item.title} />
 							<span className={s.itemTitle}>{item.title}</span>
 						</button>
@@ -114,7 +114,7 @@ export default function Menu() {
 			<div className={s.foodCardContainer}>
 				<div className={s.foodCard}>
 					{foodItems.map((food, index) => (
-						<Link to="/order" className={s.foodCardButton} id={"menu" + index}>
+						<Link to="/order" className={s.foodCardButton} id={index}>
 							<img src={food.url} alt={food.title} className={s.foodCardImg} />
 							<div className={s.foodCardText}>
 								<div className={s.foodCardTitle}>{food.title}</div>

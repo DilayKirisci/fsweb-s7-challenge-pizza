@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import Material from "./Material";
 import Deliver from "./Deliver";
-
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
+import { withRouter } from "react-router-dom";
 
 const pizzas = [
 	{
@@ -45,6 +45,7 @@ const initialState = {
 	dough: "",
 	materials: [],
 	note: "",
+	count: "",
 };
 
 const schema = yup.object().shape({
@@ -68,23 +69,21 @@ export default function Order() {
 		materials: "",
 	});
 
-	function updatePrice(data) {
+	function updatePrice(data, count) {
 		const basePrice = pizzas[0].price;
 		let ext = data.materials.length * 5;
-		setExtra(ext);
-		setSum(basePrice + ext);
-		setPrice(basePrice + ext);
+		setExtra(ext * count);
+		setSum((basePrice + ext) * count);
+		setPrice((basePrice + ext) * count);
 	}
 
 	function handleIncreaseAmount() {
-		setCount(count + 1);
-		setPrice(sum * (count + 1));
+		setCount((prevCount) => prevCount + 1);
 	}
 
 	function handleDecreaseAmount() {
-		if (count > 0) {
-			setCount(count - 1);
-			setPrice(sum * (count - 1));
+		if (count > 1) {
+			setCount((prevCount) => prevCount - 1);
 		}
 	}
 
@@ -103,19 +102,20 @@ export default function Order() {
 						? [...prevData.materials, value]
 						: prevData.materials.filter((m) => m !== value)
 					: value,
-			// price: handleAmountClick(sum, count),
-
+			price: sum,
 			type: pizzas[0].type,
+			count: count,
 		}));
 		updatePrice(data);
 	};
 
 	useEffect(() => {
-		updatePrice(data);
+		updatePrice(data, count);
 	}, [data, count]);
 
 	function handleFormSubmit(e) {
 		e.preventDefault();
+
 		if (disabled) {
 			let errorMsg = "You have to complete the form.";
 			if (errors.size) {
@@ -131,7 +131,6 @@ export default function Order() {
 				.post("https://reqres.in/api/users", data)
 				.then(function(response) {
 					console.log("postData", response.data);
-					setData(initialState);
 				})
 				.catch(function(error) {
 					console.log(error);
@@ -147,6 +146,8 @@ export default function Order() {
 	const handleClick = (route) => {
 		setActiveRoute(route);
 	};
+
+	console.log("data", data);
 
 	return (
 		<>

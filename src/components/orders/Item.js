@@ -1,11 +1,16 @@
 import s from "./Order.module.css";
 import React from "react";
+import orderBanner from "../../Assets/esnek/esnek-form-banner.png";
+import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
 export default function Item(props) {
 	const { pizzas, onFormChange } = props;
 
 	return (
 		<>
 			<div className={s.item}>
+				{/* <div className={s.orderBanner}>
+					<img src={orderBanner} alt="banner" />
+				</div> */}
 				<h2 className={s.itemTitle}>Positon Absolute Aci Pizza</h2>
 				<div className={s.itemDetails}>
 					<span className={s.itemPrice}>
@@ -24,9 +29,9 @@ export default function Item(props) {
 						<p>
 							Boyut Sec <span style={{ color: "red" }}>*</span> :{" "}
 						</p>
-						{pizzas[0].size.map((siz) => (
+						{pizzas[0].size.map((siz, index) => (
 							<label htmlFor={siz}>
-								<input type="radio" id={siz} name="size" value={siz} />
+								<input type="radio" id={siz} name="size" value={siz} required />
 								{siz}
 							</label>
 						))}
@@ -35,7 +40,7 @@ export default function Item(props) {
 						<p>
 							Hamur Sec<span style={{ color: "red" }}>*</span> :{" "}
 						</p>
-						<select name="dough" as="select">
+						<select name="dough" as="select" required>
 							<option value="" label="Hamur Kalinligi" name="dough" />
 							{pizzas[0].dough.map((dou) => (
 								<option value={dou} label={dou} name="dough"></option>
