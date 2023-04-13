@@ -3,10 +3,6 @@ link {
 	color: white;
 }
 
-.item {
-	background-color: #faf7f2;
-}
-
 .orderHeader h1 {
 	text-align: center;
 	font-family: "Barlow", sans-serif;
@@ -15,11 +11,12 @@ link {
 	margin: 0;
 	padding: 50px;
 	color: white;
+	margin-bottom: -130px;
 }
 
 .breadcrumbs {
 	text-align: left;
-	background-color: #fdc913;
+	background-color: #ce2829;
 }
 .breadcrumbs a {
 	color: white;
@@ -38,6 +35,7 @@ link {
 	margin: 30px auto;
 	line-height: 2.3;
 	position: relative;
+	background-color: white;
 }
 
 .itemTitle {
@@ -78,13 +76,14 @@ link {
 	font-weight: bolder;
 }
 .itemSize {
-	margin-right: 400px;
+	margin-right: 300px;
 	display: flex;
 	flex-direction: column;
 }
 
 .itemSize input {
 	margin-top: 20px;
+	background-color: #faf7f2;
 }
 
 .itemDough label {
@@ -122,12 +121,14 @@ link {
 
 .noteContainer input {
 	width: 100%;
-	padding: 15px 15px;
+	padding: 23px 15px;
 	border-radius: 10px;
 	border: 1px solid rgba(117, 114, 114, 0.434);
 	font-weight: ligher;
-	margin-bottom: 30px;
+	margin: 40px auto;
 	font-size: 12px;
+	background-color: #faf7f2;
+	border: none;
 }
 .noteContainer hr {
 	font-weight: bolder;
@@ -138,7 +139,6 @@ link {
 /* -----Delivery ---- */
 
 .deliverContainer {
-	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
@@ -146,28 +146,70 @@ link {
 }
 
 .deliverButton {
-	border: 1px solid gray;
+	border: none;
 	text-align: center;
+	background-color: #faf7f2;
+	border-radius: 20px;
 }
 .itemCount {
 	width: 30px;
-	padding: 15px;
+	padding: 20px;
+	font-size: 18px;
 }
 .buttonDesrease {
-	background-color: #fdc913;
-	padding: 15px;
-	width: 30px;
+	padding: 20px;
+	width: 50px;
+	background-color: #faf7f2;
+	border: none;
+	font-size: 18px;
+	border-radius: 10px;
 }
 
 .buttonIncrease {
-	background-color: #fdc913;
-	padding: 15px;
-	width: 30px;
+	padding: 20px;
+	width: 50px;
+	background-color: #faf7f2;
+	border: none;
+	font-size: 18px;
+	border-radius: 10px;
 }
 
 .deliverSum {
-	background-color: #fdc913;
 	width: 70%;
+	text-align: left;
+	background-color: #faf7f2;
+	border-radius: 10px;
+	padding: 40px 50px;
+}
+
+.secimler {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 20px auto;
+}
+
+.toplam {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 20px auto;
+	color: #ce2829;
+	font-weight: bolder;
+}
+
+.submitOrder {
+	background-color: #fdc913;
 	text-align: center;
-	padding: 30px;
+
+	padding: 10px;
+	margin-bottom: -20px;
+	font-weight: bolder;
+	border: none;
+	border-radius: 10px;
+}
+
+.submitButton {
+	text-align: center;
+	padding: 20px;
 }

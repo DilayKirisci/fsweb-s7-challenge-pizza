@@ -26,15 +26,15 @@ export default function Deliver(props) {
 					</button>
 				</div>
 				<div className={s.deliverSum}>
-					<h2>Siparis Toplam</h2>
-					<div>
+					<h3>Siparis Toplam</h3>
+					<div className={s.secimler}>
 						<p>Secimler</p>
 
 						<p>
 							{extra} {"\u20BA"}
 						</p>
 					</div>
-					<div>
+					<div className={s.toplam}>
 						<p>Toplam</p>
 						{extra === 0 ? (
 							<p>
@@ -46,9 +46,16 @@ export default function Deliver(props) {
 							</p>
 						)}
 					</div>
-					<button onClick={onFormSubmit} disabled={disabled} id="submitOrder">
-						Sipars Ver!
-					</button>
+					<div className={s.submitButton}>
+						<button
+							onClick={onFormSubmit}
+							disabled={disabled}
+							id="submitOrder"
+							className={s.submitOrder}
+						>
+							Sipars Ver!
+						</button>
+					</div>
 				</div>
 			</div>
 		</>

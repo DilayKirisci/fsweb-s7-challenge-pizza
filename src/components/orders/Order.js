@@ -6,7 +6,6 @@ import Deliver from "./Deliver";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import { withRouter } from "react-router-dom";
 
 const pizzas = [
 	{
@@ -131,6 +130,7 @@ export default function Order() {
 				.post("https://reqres.in/api/users", data)
 				.then(function(response) {
 					console.log("postData", response.data);
+					window.location.href = "/success";
 				})
 				.catch(function(error) {
 					console.log(error);

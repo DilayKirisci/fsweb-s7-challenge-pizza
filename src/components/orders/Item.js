@@ -8,9 +8,6 @@ export default function Item(props) {
 	return (
 		<>
 			<div className={s.item}>
-				{/* <div className={s.orderBanner}>
-					<img src={orderBanner} alt="banner" />
-				</div> */}
 				<h2 className={s.itemTitle}>Positon Absolute Aci Pizza</h2>
 				<div className={s.itemDetails}>
 					<span className={s.itemPrice}>
