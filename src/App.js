@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Home from "./components/home/Home.js";
 import Success from "./components/Success";
 import Order from "./components/orders/Order";
@@ -9,20 +10,22 @@ import "./App.css";
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Route exact path="/">
-				<Home />
-			</Route>
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
 
-			<Route path="/order">
-				<Order />
-			</Route>
+				<Route path="/order">
+					<Order />
+				</Route>
 
-			<Route path="/success">
-				<Success />
-			</Route>
-			<Route path="/menu">
-				<Menu />
-			</Route>
+				<Route path="/success">
+					<Success />
+				</Route>
+				<Route path="/menu">
+					<Menu />
+				</Route>
+			</Switch>
 		</BrowserRouter>
 	);
 };

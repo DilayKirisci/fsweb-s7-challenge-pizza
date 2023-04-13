@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import s from "./Order.module.css";
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
@@ -55,6 +56,7 @@ const schema = yup.object().shape({
 });
 
 export default function Order() {
+	const history = useHistory();
 	const [data, setData] = useState(initialState);
 	const [price, setPrice] = useState(pizzas[0].price);
 	const [extra, setExtra] = useState(0);
@@ -130,7 +132,10 @@ export default function Order() {
 				.post("https://reqres.in/api/users", data)
 				.then(function(response) {
 					console.log("postData", response.data);
-					window.location.href = "/success";
+					history.push({
+						pathname: "/success",
+						state: { data },
+					});
 				})
 				.catch(function(error) {
 					console.log(error);

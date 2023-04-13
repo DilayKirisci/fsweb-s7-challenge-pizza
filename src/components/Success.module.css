@@ -1,10 +1,9 @@
 .successContainer {
 	width: 100%;
-	height: 65vw;
 	background-color: #ce2829;
 	color: white;
 	text-align: center;
-	padding: 100px;
+	padding: 40px;
 }
 
 .successTitle {
@@ -12,13 +11,67 @@
 	font-family: "Barlow", sans-serif;
 	font-weight: bolder;
 	letter-spacing: -2px;
-	font-size: 34px;
+	font-size: 44px;
 }
 
 .successSubtitle {
-	margin-top: 300px;
-	font-size: 52px;
+	font-size: 62px;
 	font-family: "Quattrocento", serif;
 	font-weight: lighter;
 	font-weight: 300;
+	margin-bottom: 50px;
+	margin-top: 20px;
+	letter-spacing: -4px;
+}
+hr {
+	width: 47%;
+	margin: 40px auto;
+	height: 3px;
+	border: solid 1px white;
+}
+
+.successOrn {
+	font-family: "Satisfy", cursive;
+	color: #fdc913;
+	font-size: 24px;
+	font-weight: bolder;
+}
+
+.summary {
+	display: flex;
+	flex-direction: column;
+	margin: 30px auto;
+	justify-content: center;
+	align-items: center;
+	gap: 100px;
+}
+.orderSum {
+	flex-direction: column;
+	justify-content: flex-start;
+	align-content: flex-start;
+	font-size: 20px;
+}
+
+.orderSum p {
+	margin-top: 20px;
+	text-align: left;
+	margin-left: 60px;
+}
+.orderSum span {
+	font-weight: bolder;
+}
+.orderPrice {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 30px;
+	font-size: 26px;
+	font-weight: bolder;
+}
+
+.orderPrice p {
+	margin: 30px;
 }
